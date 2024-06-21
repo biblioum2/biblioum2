@@ -8,18 +8,17 @@ const port = 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Configuración de EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Rutas
-const indexRouter = require('./routes/index');
-const booksRouter = require('./routes/books');
+const indexRouter = require('./routes/main');
 
 app.use('/', indexRouter);
-app.use('/books', booksRouter);
+
 
 // Iniciar servidor
 app.listen(port, () => {

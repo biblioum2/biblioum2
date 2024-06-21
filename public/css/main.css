@@ -25,7 +25,7 @@ body {
 }
 /* Imagen de Header (libreria) */
 #Cabecera {
-    background: url(multimedia/barraNav.jpeg);
+    background: url(/img/barraNav.jpeg);
     padding: 15px;
 }
 /* Efecto de sombra en titulo */

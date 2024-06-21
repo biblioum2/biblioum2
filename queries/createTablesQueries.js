@@ -52,10 +52,31 @@ CREATE TABLE favorites (
 );
 `;
 
-module.exports = {
-    createTableUsers,
-    createTableAuthors,
-    createTableCategories,
-    createTableBooks,
-    createTableFavorites
+
+const createTables = async () => {
+    try {
+        await pool.query(createTableUsers);
+        console.log('Tabla usuarios creada');
+        await pool.query(createTableAuthors);
+        console.log('Tabla autores creada');
+        await pool.query(createTableCategories);
+        console.log('Tabla de categorias creada');
+        await pool.query(createTableBooks);
+        console.log('Tabla de libros creada');
+        await pool.query(createTableFavorites);
+        console.log('Tabla de favoritos creada');
+    } catch (error) {
+        console.log(`Error al crear tablas.`, error);
+    } finally {
+        pool.end();
+    }
 };
+
+createTables();
+// module.exports = {
+//     createTableUsers,
+//     createTableAuthors,
+//     createTableCategories,
+//     createTableBooks,
+//     createTableFavorites
+// };

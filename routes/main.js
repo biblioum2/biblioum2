@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Ruta para la página principal
 router.get('/', (req, res) => {
-  res.render('/views/main.ejs', { title: 'Página de Inicio' });
+  res.render('main', { title: 'Página de Inicio' });
 });
 
 // Otras rutas básicas pueden ir aquí

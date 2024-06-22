@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     res.render('main', { title: 'Página de Inicio', books });
   } catch (error) {
     console.log(`Error al consultar`, error);
-    res.status(500).send('Error al obtener los libros');
+    res.status(500).send('Error al obtener los libros main');
   }
 });
 

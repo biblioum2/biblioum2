@@ -17,7 +17,6 @@ const getBooks = async () => {
     }
 };
 
-getBooks();
-module.export = {
+module.exports = {
     getBooks
 };

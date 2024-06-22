@@ -64,15 +64,13 @@
         <div id="Estanteria"> <!-- cuerpo -->
             <div id="contenido"> <!-- Contenido -->
                 <div id="slider1">
-                    <% if (books && books.length > 0) { %>
+                    
                         <ul>
                             <% books.forEach(book => { %>
-                                <li><img src="img/sliders/imagen1.jpg" alt=""></li>
+                                <li><img src="img/books/<%= book.cover_image_filename %>" alt=""></li>
                             <% }); %>
                         </ul>
-                    <% } else { %>
-                        <p>No hay libros disponibles</p>
-                    <% } %>
+                    
                 </div>
                 <div id="slider2">
                     <ul>

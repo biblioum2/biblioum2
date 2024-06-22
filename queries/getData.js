@@ -11,7 +11,7 @@ const getBooks = async () => {
     try {
         const res = await pool.query(query);
         console.log(res.rows);
-        return res;
+        return res.rows;
     } catch (error) {
         console.log('Error al obtener los datos', error);
     }

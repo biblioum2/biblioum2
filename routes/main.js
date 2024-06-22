@@ -6,6 +6,7 @@ const { getBooks } = require('../queries/getData');
 router.get('/', async (req, res) => {
   try {
     const books = await getBooks();
+    console.log(`Esto es el resultado en main books: ${books}`);
     res.render('main', { title: 'Página de Inicio', books });
   } catch (error) {
     console.log(`Error al consultar`, error);

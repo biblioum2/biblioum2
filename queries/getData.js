@@ -17,6 +17,6 @@ const getBooks = async () => {
     }
 };
 
-module.exports = {
+module.exports= {
     getBooks
 };

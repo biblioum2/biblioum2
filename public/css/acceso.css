@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(img/Me.jpg)  no-repeat;
+  background: url(../img/Me.jpg)  no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -112,4 +112,12 @@ body {
 
 .register-link p a:hover {
   text-decoration: underline;
+}
+
+.authError {
+  background: rgba(255, 142, 142, 0.322) !important;
+}
+
+#passwordInput::placeholder {
+  color: rgb(146, 19, 19);
 }

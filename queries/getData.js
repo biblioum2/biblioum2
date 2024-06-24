@@ -17,6 +17,22 @@ const getBooks = async () => {
     }
 };
 
+const getUser = async (username) => {
+    const query = `
+        SELECT * FROM users WHERE username = $1
+    `;
+    try {
+        const res = await pool.query(query, [username]);
+        console.log('El usuario es: ', res);
+        return res.rows;
+    } catch (error) {
+        console.log('Error al consultar usuario', error);
+        throw error;
+    }
+
+};
+
 module.exports= {
-    getBooks
+    getBooks,
+    getUser
 };

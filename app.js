@@ -9,7 +9,7 @@ const pool = require('./config/database'); // Importa la configuración de la ba
 const { getUser } = require('./queries/getData'); 
 
 const app = express();
-const port = 3000;
+const port = 2000;
 
 
 // Middleware
@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(cookieParser());
 app.use(session({
+  name: 'user',
   secret: process.env.COOKIE_TOKEN,
   resave: false,
   saveUninitialized: true,
@@ -26,6 +27,7 @@ app.use(session({
     httpOnly: true, // Esto ayuda a proteger la cookie de ataques XSS
   }
 }));
+
 
 
 // Configuración de EJS
@@ -45,7 +47,8 @@ app.post('/login', async (req, res) => {
       if (data.length > 0) {
         const user = data[0];
         if (user.password_hash == password ) {
-          req.session.user = { id: user.user_id, username: user.username };
+          req.session.isAuth = true;
+          req.session.user = { username: user.username };
           if (remember === 'on') {
             req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 dias
           } else {

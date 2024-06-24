@@ -2,125 +2,145 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <title>BIBLIOTECA</title>
-    <link rel=icon href="img/libro.ico" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <link rel="stylesheet" type="text/css" href="css/footer.css" />
-    <link rel="stylesheet" type="text/css" href="css/Nav.css" />
-    <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <title>BIBLIOTECA</title>
+  <link rel=icon href="img/libro.ico" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/footer.css" />
+  <link rel="stylesheet" type="text/css" href="css/Nav.css" />
+  <script src="https://kit.fontawesome.com/b408879b64.js" crossorigin="anonymous"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-    <div class="container-main">
-        <div id="Princi pal">
-            <div class="Logo"> <!-- Caja header -->
-                <header id="Cabecera"> <!-- header -->
-                    <!-- Logo UMAN -->
-                    <h1>𝐂𝐀𝐓Á𝐋𝐎𝐆𝐎 𝐄𝐋𝐄𝐂𝐓𝐑𝐎𝐍𝐈𝐂𝐎</h1> <!-- Titulo de sitio -->
-                </header>
+  <div class="container-main">
+    <div id="Princi pal">
+      <div class="Logo">
+        <!-- Caja header -->
+        <header id="Cabecera">
+          <!-- header -->
+          <!-- Logo UMAN -->
+          <h1>𝐂𝐀𝐓Á𝐋𝐎𝐆𝐎 𝐄𝐋𝐄𝐂𝐓𝐑𝐎𝐍𝐈𝐂𝐎</h1> <!-- Titulo de sitio -->
+        </header>
+      </div>
+      <nav>
+        <div class="mobile">
+          <!-- Caja responsive -->
+          <div class="header">
+            <!-- Header y nav -->
+            <div class="logo">Logo</div> <!-- Palabra logo en nav -->
+            <div class="more"><button>More</button></div> <!-- Boton More -->
+          </div>
+          <div class="links">
+            <!-- vinculos -->
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Search</a>
+            <a href="#">Sign up</a>
+            <a href="#">Login</a>
+          </div>
+        </div>
+
+        <div class="desktop">
+          <!-- Diseño escritorio -->
+          <div class="Logo"><img src="img/uman.png" alt="" /></div> <!-- Palabra logo en nav -->
+
+          <div class="primary">
+            <!-- Buscador -->
+            <input type="text" placeholder="Buscar..." /> <!-- Buscador -->
+            <button><i class="fa-solid fa-magnifying-glass"></i></button> <!-- Buscador -->
+          </div>
+
+          <div class="secondary full">
+            <!-- Links escritorio en nav -->
+            <a href="#">Search</a>
+            <a href="#">Sign up</a>
+            <a href="#">Login</a>
+          </div>
+          <div class="secondary mini">
+            <!-- Links en movil -->
+            <a href="#" class="more">More</a> <!-- Boton desplegable -->
+            <div class="submenu">
+              <!-- Submenu -->
+              <a href="#">Sign up</a>
+              <a href="#">Login</a>
             </div>
-            <nav>
-                <div class="mobile"> <!-- Caja responsive -->
-                    <div class="header"> <!-- Header y nav -->
-                        <div class="logo">Logo</div> <!-- Palabra logo en nav -->
-                        <div class="more"><button>More</button></div> <!-- Boton More -->
-                    </div>
-                    <div class="links"> <!-- vinculos -->
-                        <a href="#">Services</a>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Search</a>
-                        <a href="#">Sign up</a>
-                        <a href="#">Login</a>
-                    </div>
-                </div>
+          </div>
+        </div>
+      </nav> <!-- Caja nav -->
+    </div> <!-- Header y Navegador -->
+    <div id="Estanteria">
+      <!-- cuerpo -->
+      <div id="contenido">
+        <!-- Contenido -->
+        <div id="slider1">
 
-                <div class="desktop"> <!-- Diseño escritorio -->
-                    <div class="Logo"><img src="img/uman.png" alt="" /></div> <!-- Palabra logo en nav -->
+          <ul>
+            <% books.forEach(book => { %>
+            <li><img src="img/books/<%= book.cover_image_filename %>" alt=""></li>
+            <% }); %>
+          </ul>
 
-                    <div class="primary"> <!-- Buscador -->
-                        <input type="text" placeholder="Buscar..." /> <!-- Buscador -->
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button> <!-- Buscador -->
-                    </div>
-
-                    <div class="secondary full"> <!-- Links escritorio en nav -->
-                        <a href="#">Search</a>
-                        <a href="#">Sign up</a>
-                        <a href="#">Login</a>
-                    </div>
-                    <div class="secondary mini"> <!-- Links en movil -->
-                        <a href="#" class="more">More</a> <!-- Boton desplegable -->
-                        <div class="submenu"> <!-- Submenu -->
-                            <a href="#">Sign up</a>
-                            <a href="#">Login</a>
-                        </div>
-                    </div>
-                </div>
-            </nav> <!-- Caja nav -->
-        </div> <!-- Header y Navegador -->
-        <div id="Estanteria"> <!-- cuerpo -->
-            <div id="contenido"> <!-- Contenido -->
-                <div id="slider1">
-                    
-                        <ul>
-                            <% books.forEach(book => { %>
-                                <li><img src="img/books/<%= book.cover_image_filename %>" alt=""></li>
-                            <% }); %>
-                        </ul>
-                    
-                </div>
-                <div id="slider2">
-                    <ul>
-                        <li><img src="img/sliders/imagen1.jpg" alt="" /></li>
-                        <li><img src="img/sliders/imagen2.jpg" alt="" /></li>
-                        <li><img src="img/sliders/imagen3.jpg" alt="" /></li>
-                        <li><img src="img/sliders/imagen4.jpg" alt="" /></li>
-                    </ul>
-                </div>
-                <div id="slider3">
-                </div>
-                <div id="slider4">
-                </div>
-            </div>
-        </div> <!-- Contenido central -->
-        <div class="footer">
-            <footer> <!-- Etiqueta footer -->
-                <div class="container"> <!-- Footer Up -->
-                    <div class="footer-content"> <!-- contactos -->
-                        <h3>Contact Us</h3>
-                        <p>Email: Info@example.com</p>
-                        <p>Phone: +52879968986</p>
-                        <p>Address: Your address street 123</p>
-                    </div>
-                    <div class="footer-content"> <!-- Links -->
-                        <h3>Quick Links</h3>
-                        <ul class="Lista"> <!-- Lista de links -->
-                            <li><a href="">Home</a></li>
-                            <li><a href="">About</a></li>
-                            <li><a href="">Services</a></li>
-                            <li><a href="">Products</a></li>
-                            <li><a href="">Contacts</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-content"> <!-- Redes sociales -->
-                        <h3>Follow Us</h3>
-                        <ul class="social-icons"> <!-- iconos de redes sociales -->
-                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bottom-bar"> <!-- Footer Down -->
-                    <p>&copy; 2023 your company. All rights reserved</p>
-                </div>
-            </footer>
-        </div> <!-- Caja Footer -->
-    </div> <!-- contenedor -->
+        </div>
+        <div id="slider2">
+          <ul>
+            <li><img src="img/sliders/imagen1.jpg" alt="" /></li>
+            <li><img src="img/sliders/imagen2.jpg" alt="" /></li>
+            <li><img src="img/sliders/imagen3.jpg" alt="" /></li>
+            <li><img src="img/sliders/imagen4.jpg" alt="" /></li>
+          </ul>
+        </div>
+        <div id="slider3">
+        </div>
+        <div id="slider4">
+        </div>
+      </div>
+    </div> <!-- Contenido central -->
+    <div class="footer">
+      <footer>
+        <!-- Etiqueta footer -->
+        <div class="container">
+          <!-- Footer Up -->
+          <div class="footer-content">
+            <!-- contactos -->
+            <h3>Contact Us</h3>
+            <p>Email: Info@example.com</p>
+            <p>Phone: +52879968986</p>
+            <p>Address: Your address street 123</p>
+          </div>
+          <div class="footer-content">
+            <!-- Links -->
+            <h3>Quick Links</h3>
+            <ul class="Lista">
+              <!-- Lista de links -->
+              <li><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Services</a></li>
+              <li><a href="">Products</a></li>
+              <li><a href="">Contacts</a></li>
+            </ul>
+          </div>
+          <div class="footer-content">
+            <!-- Redes sociales -->
+            <h3>Follow Us</h3>
+            <ul class="social-icons">
+              <!-- iconos de redes sociales -->
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <!-- Footer Down -->
+          <p>&copy; 2023 your company. All rights reserved</p>
+        </div>
+      </footer>
+    </div> <!-- Caja Footer -->
+  </div> <!-- contenedor -->
 </body>
 
 </html>

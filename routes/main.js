@@ -1,25 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const { getBooks } = require('../queries/getData');
 
-router.use(cookieParser());
+// router.use(cookieParser());
 
 // Ruta para formulario login
 router.get('/', (req, res) => {
 
-  const isUser = req.cookies.user || false;
-
-  if ( isUser ) {
-    res.redirect('/main');
-  } else {
     res.render('login', {
       title: 'login',
       username: undefined,
       authErrorName: false,
       authErrorPassword: false
     });
-  }
   
 });
 
@@ -34,6 +28,14 @@ router.get('/main', async (req, res) => {
     console.log(`Error al consultar`, error);
     res.status(500).send('Error al obtener los libros main');
   }
+});
+
+router.get('/book', (req, res) => {
+  res.render('book', { title: 'book' });
+});
+
+router.get('/book', (req, res) => {
+  res.render('book', { title: 'book' });
 });
 
 // Otras rutas básicas pueden ir aquí

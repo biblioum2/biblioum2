@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,  -- Guardar la contraseña hasheada
     email VARCHAR(100) UNIQUE NOT NULL,
+    role VARCHAR(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 `;
@@ -28,13 +29,15 @@ CREATE TABLE IF NOT EXISTS categories (
 const createTableBooks = `
 CREATE TABLE books (
     book_id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    title VARCHAR(135) NOT NULL,
+    edition VARCHAR(10),
     author_id INT NOT NULL,
     category_id INT NOT NULL,
     publication_date DATE,
     isbn VARCHAR(20) UNIQUE,
     summary TEXT,
-    cover_image_filename VARCHAR(255),  -- Almacena el nombre del archivo de la portada
+    available VARCHAR(8),
+    cover_image_filename VARCHAR(60),  -- Almacena el nombre del archivo de la portada
     FOREIGN KEY (author_id) REFERENCES authors(author_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );

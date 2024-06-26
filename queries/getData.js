@@ -1,5 +1,7 @@
 const pool = require('../config/database');
 
+// OBTENCION DE LIBROS
+
 const getBooks = async () => {
     const query = `
         SELECT books.book_id, books.title, authors.name AS author, categories.name AS category, books.publication_date, books.isbn, books.summary, books.cover_image_filename
@@ -17,13 +19,15 @@ const getBooks = async () => {
     }
 };
 
-const getUser = async (username) => {
+// OBTENER EL USUARIO PARA VALIDAR INICIO
+
+const getUser = async () => {
     const query = `
-        SELECT * FROM users WHERE username = $1
+        SELECT * FROM users
     `;
     try {
-        const res = await pool.query(query, [username]);
-        console.log('El usuario es: ', res);
+        const res = await pool.query(query);
+        console.log('El usuario es: ', res.rows[0]);
         return res.rows;
     } catch (error) {
         console.log('Error al consultar usuario', error);

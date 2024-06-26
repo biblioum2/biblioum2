@@ -2,13 +2,13 @@ const pool = require('../config/database');
 
 
 // Función para insertar un usuario
-const insertUser = async (username, passwordHash, email) => {
+const insertUser = async (username, passwordHash, email, role) => {
   const query = `
-    INSERT INTO users (username, password_hash, email)
-    VALUES ($1, $2, $3)
+    INSERT INTO users (username, password_hash, email, role)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
   `;
-  const values = [username, passwordHash, email];
+  const values = [username, passwordHash, email, role];
 
   try {
     const res = await pool.query(query, values);
@@ -88,7 +88,7 @@ const insertFavorite = async (userId, bookId) => {
 
 // Ejemplos de uso
 (async () => {
-  await insertUser('severo', 'password', 'enrrimarq2000@gmail.com');
+  await insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
   // await insertAuthor('Autor 1', 'Biografía del autor 1');
   // await insertCategory('Tecnologia');
   // await insertBook('Libro 1', 1, 1, '2023-01-01', '1234567890123', 'Resumen del libro 1', 'eloquent.jpeg');

@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const pool = require("./config/database"); // Importa la configuración de la base de datos
 const { getUser } = require("./queries/getData");
 
@@ -13,6 +13,7 @@ const port = 2000;
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(cookieParser());
 
 // Configuración de EJS
 app.set("view engine", "ejs");
@@ -43,7 +44,7 @@ app.post("/login", async (req, res) => {
           sameSite: "strict", // Limita el alcance de la cookie a la misma origin
         };
         res.cookie("authToken", authToken, cookieOptions);
-        res.redirect("/main");
+        res.redirect("/");
       } else {
         res.render("login", {
           authErrorName: false,

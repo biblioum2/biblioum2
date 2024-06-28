@@ -87,13 +87,17 @@ const insertFavorite = async (userId, bookId) => {
 };
 
 // Ejemplos de uso
-(async () => {
-  await insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
-  // await insertAuthor('Autor 1', 'Biografía del autor 1');
-  // await insertCategory('Tecnologia');
-  // await insertBook('Libro 1', 1, 1, '2023-01-01', '1234567890123', 'Resumen del libro 1', 'eloquent.jpeg');
-  // await insertFavorite(1, 1);
+// (async () => {
+//   // await insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
+//   // await insertAuthor('Autor 1', 'Biografía del autor 1');
+//   // await insertCategory('Tecnologia');
+//   // await insertBook('Libro 1', 1, 1, '2023-01-01', '1234567890123', 'Resumen del libro 1', 'eloquent.jpeg');
+//   // await insertFavorite(1, 1);
 
-  // Cierra la conexión después de insertar los datos
-  await pool.end();
-})();
+//   // Cierra la conexión después de insertar los datos
+//   await pool.end();
+// })();
+
+module.exports = {
+  insertUser: insertUser,
+};

@@ -12,7 +12,7 @@
             <h1>Admin Panel - Gestión de Datos</h1>
             <nav>
                 <ul>
-                    <li><a href="#users-form">Usuarios</a></li>
+                    <li><a href="/admin/users">Usuarios</a></li>
                     <li><a href="#authors-form">Autores</a></li>
                     <li><a href="#categories-form">Categorías</a></li>
                     <li><a href="#books-form">Libros</a></li>
@@ -26,7 +26,7 @@
         <!-- Formulario para usuarios -->
         <section id="users-form" class="form-section">
             <h2>Usuarios</h2>
-            <form id="form-users" class="form">
+            <form id="form-users" class="form" method="POST">
                 <div class="form-group">
                     <label for="username">Nombre de usuario</label>
                     <input type="text" id="username" name="username" required>

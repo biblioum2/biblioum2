@@ -58,6 +58,9 @@
           <div class="secondary full">
             <!-- Links escritorio en nav -->
             <a href="#">Buscar</a>
+            <% if (isAdmin) {%>
+              <a href="./admin">Admin</a>
+              <% } %>
             <a href="#">Regístrate</a>
             <% if (authToken) {%>
             <a href="./logout">Cerrar sesion</a>

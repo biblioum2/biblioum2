@@ -6,7 +6,8 @@ const path = require("path");
 const cookieParser = require('cookie-parser');
 const pool = require("./config/database"); // Importa la configuración de la base de datos
 const { getUser } = require("./queries/getData");
-
+const { addUser } = require("./queries/inputData");
+ 
 const app = express();
 const port = 2000;
 
@@ -26,13 +27,15 @@ app.use("/", indexRouter);
 
 app.post("/login", async (req, res) => {
   const { username, password, remember } = req.body;
-  console.log(remember);
+  
   try {
     const data = await getUser(username, password);
     if (data.length > 0) {
       const user = data[0];
       if (user.password_hash == password) {
-
+        // EVALUAR EL ROL DEL USUARIO
+        const isAdmin = user.role == `admin` ?  true : false;
+        console.log('Es admin desde app? ', isAdmin);
         const authToken = `${user.user_id}-${Math.random()
           .toString(36)
           .substring(7)}`;
@@ -44,6 +47,8 @@ app.post("/login", async (req, res) => {
           sameSite: "strict", // Limita el alcance de la cookie a la misma origin
         };
         res.cookie("authToken", authToken, cookieOptions);
+        res.cookie("isAdmin", isAdmin, cookieOptions);
+
         res.redirect("/");
       } else {
         res.render("login", {
@@ -64,6 +69,15 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post("/admin/users", async (req, res) => {
+  const { username, password, email, role} = req.body;
+  try {
+    addUser(username, password, email, role);
+    res.render('users', { userAdded: true });
+  } catch (error) {
+    console.log('Error al agregar usuario: ', error);
+  }
+});
 // Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

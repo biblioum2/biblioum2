@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrar Usuarios</title>
+<link rel="stylesheet" href="/css/users.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Administrar Usuarios</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="users.html" class="active">Usuarios</a></li>
+                    <li><a href="authors.html">Autores</a></li>
+                    <li><a href="categories.html">Categorías</a></li>
+                    <li><a href="books.html">Libros</a></li>
+                    <li><a href="orders.html">Órdenes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="search-users">
+            <h2>Buscar Usuarios</h2>
+            <input type="text" id="search-input" placeholder="Buscar usuario por nombre...">
+        </section>
+
+        <section>
+            <h2>Lista de Usuarios</h2>
+            <table id="user-table" class="user-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre de usuario</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se llenarán dinámicamente los datos de los usuarios -->
+                    <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>admin@example.com</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    <!-- Puedes agregar más filas dinámicamente con JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="add-user">
+            <h2>Agregar Usuario</h2>
+            <form id="form-add-user" class="form" method="POST">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Rol</label>
+                    <select class="" name="role" id="role">
+                        <option value="admin">Usuario</option>
+                        <option value="user">Administrado</option>
+                    </select>                
+                </div>
+                <button type="submit" class="btn-submit">Agregar Usuario</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

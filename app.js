@@ -6,7 +6,7 @@ const path = require("path");
 const cookieParser = require('cookie-parser');
 const pool = require("./config/database"); // Importa la configuración de la base de datos
 const { getUser } = require("./queries/getData");
-const { addUser } = require("./queries/inputData");
+const { insertUser } = require("./queries/inputData");
  
 const app = express();
 const port = 2000;
@@ -72,8 +72,18 @@ app.post("/login", async (req, res) => {
 app.post("/admin/users", async (req, res) => {
   const { username, password, email, role} = req.body;
   try {
-    addUser(username, password, email, role);
-    res.render('users', { userAdded: true });
+    await insertUser(username, password, email, role);
+    res.json({ exito: true });
+  } catch (error) {
+    console.log('Error al agregar usuario: ', error);
+  }
+});
+
+app.post("/admin/books", async (req, res) => {
+  const { username, password, email, role} = req.body;
+  try {
+    insertUser(username, password, email, role);
+    res.redirect('admin/users/exito');
   } catch (error) {
     console.log('Error al agregar usuario: ', error);
   }

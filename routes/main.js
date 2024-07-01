@@ -28,7 +28,6 @@ router.get('/', async (req, res) => {
 
   const authToken = req.cookies.authToken ? true : false;
   const isAdmin = req.cookies.isAdmin ? true : false;
-console.log('is admin desde main? ', isAdmin);
   try {
     const books = await getBooks();
     // console.log(`Esto es el resultado en main books: ${books}`);
@@ -42,19 +41,25 @@ console.log('is admin desde main? ', isAdmin);
 router.get('/admin', (req, res) => {
   const isAdmin = req.cookies.isAdmin;
   if (isAdmin) {
-    res.render('admin', { title: 'admin' });
+    res.render('admin', { title: 'admin', currentPage: 'admin' });
   } else {
     res.redirect('/');
   }
 });
 
 router.get('/admin/users', (req, res) => {
-  res.render('users', { title: 'users' });
+  res.render('users', { title: 'users', currentPage: 'users',userAdded: undefined, postResponse: false});
 });
 
 // Otras rutas básicas pueden ir aquí
-router.get('/about', (req, res) => {
-  res.render('about', { title: 'Acerca de' });
+router.get('admin/users/exito', (req, res) => {
+  res.render('users', { userAdded: true, postResponse: true });
 });
 
+router.get('/admin/books', (req, res) => {
+  res.render('books', { title: 'libros', currentPage: 'books', bookAdded: undefined, postResponse: false});
+});
+router.get('admin/books/exito', (req, res) => {
+  res.render('books', { bookAdded: true, postResponse: true });
+});
 module.exports = router;

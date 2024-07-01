@@ -6,16 +6,9 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,  -- Guardar la contraseña hasheada
     email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
     role VARCHAR(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-`;
-
-const createTableAuthors = `
-CREATE TABLE IF NOT EXISTS authors (
-    author_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    biography TEXT
 );
 `;
 
@@ -27,24 +20,23 @@ CREATE TABLE IF NOT EXISTS categories (
 `;
 
 const createTableBooks = `
-CREATE TABLE books (
+CREATE TABLE IF NOT EXISTS books (
     book_id SERIAL PRIMARY KEY,
     title VARCHAR(135) NOT NULL,
-    edition VARCHAR(10),
-    author_id INT NOT NULL,
+    edition VARCHAR(10) NOT NULL,
+    author VARCHAR(100) NOT NULL,
     category_id INT NOT NULL,
     publication_date DATE,
-    isbn VARCHAR(20) UNIQUE,
-    summary TEXT,
-    available VARCHAR(8),
+    isbn VARCHAR(40) UNIQUE,
+    summary VARCHAR(400),
+    available VARCHAR(15),
     cover_image_filename VARCHAR(60),  -- Almacena el nombre del archivo de la portada
-    FOREIGN KEY (author_id) REFERENCES authors(author_id),
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 `;
 
 const createTableFavorites = `
-CREATE TABLE favorites (
+CREATE TABLE IF NOT EXISTS favorites (
     favorite_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
     book_id INT NOT NULL,
@@ -55,19 +47,33 @@ CREATE TABLE favorites (
 );
 `;
 
+const createTableOrders = `
+CREATE TABLE IF NOT EXISTS orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    return_date TIMESTAMP,
+    status VARCHAR(20) NOT NULL,  -- Puede ser 'En espera', 'Prestado', 'Devuelto'
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+);
+`;
+
+
 
 const createTables = async () => {
     try {
         await pool.query(createTableUsers);
         console.log('Tabla usuarios creada');
-        await pool.query(createTableAuthors);
-        console.log('Tabla autores creada');
         await pool.query(createTableCategories);
         console.log('Tabla de categorias creada');
         await pool.query(createTableBooks);
         console.log('Tabla de libros creada');
         await pool.query(createTableFavorites);
         console.log('Tabla de favoritos creada');
+        await pool.query(createTableOrders);
+        console.log('Tabla de ordenes creada');
     } catch (error) {
         console.log(`Error al crear tablas.`, error);
     } finally {
@@ -75,10 +81,9 @@ const createTables = async () => {
     }
 };
 
-createTables();
+// createTables();
 // module.exports = {
 //     createTableUsers,
-//     createTableAuthors,
 //     createTableCategories,
 //     createTableBooks,
 //     createTableFavorites

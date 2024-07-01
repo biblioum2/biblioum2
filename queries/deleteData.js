@@ -51,6 +51,18 @@ const deleteTableBooks = async () => {
         console.log('Error al obtener los datos', error);
     }
 };
+const deleteTableOrders = async () => {
+    const query = `
+        DROP TABLE orders
+    `;
+
+    try {
+        const res = await pool.query(query);
+        return console.log(`Tabla orders borrada`);
+    } catch (error) {
+        console.log('Error al obtener los datos', error);
+    }
+};
 const deleteTableFavorites = async () => {
     const query = `
         DROP TABLE favorites
@@ -58,7 +70,7 @@ const deleteTableFavorites = async () => {
 
     try {
         const res = await pool.query(query);
-        return console.log(`Tabla favoritos favoritos`);
+        return console.log(`Tabla favoritos borrada`);
     } catch (error) {
         console.log('Error al obtener los datos', error);
     }
@@ -66,8 +78,8 @@ const deleteTableFavorites = async () => {
 
 
 // deleteTableFavorites();
+// deleteTableOrders();
 // deleteTableBooks();
 // deleteTableCategories();
-// deleteTableAuthors();
 // deleteTableUsers();
 

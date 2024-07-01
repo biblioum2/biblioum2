@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro de Libros</title>
+    <link rel="stylesheet" href="/css/lstyles.css">
+    <link rel="stylesheet" href="/css/nav-admin.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+
+</head>
+<body>
+    <%- include('./partials/adminHeader.ejs') %>
+
+    <main>
+        <div class="containerMain">
+            <h1>Formulario de Registro de Libros</h1>
+            <form action="submit" method="POST" enctype="multipart/form-data">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required><br><br>
+    
+                <label for="edition">Edición:</label>
+                <input type="text" id="edition" name="edition"><br><br>
+    
+                <label for="author_id">ID del Autor:</label>
+                <input type="number" id="author_id" name="author_id" required><br><br>
+    
+                <label for="category_id">ID de la Categoría:</label>
+                <input type="number" id="category_id" name="category_id" required><br><br>
+    
+                <label for="publication_date">Fecha de Publicación:</label>
+                <input type="date" id="publication_date" name="publication_date"><br><br>
+    
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn"><br><br>
+    
+                <label for="summary">Resumen:</label><br>
+                <textarea id="summary" name="summary" rows="4"></textarea><br><br>
+    
+                <label for="available">Disponible:</label>
+                <select id="available" name="available">
+                    <option value="yes">Sí</option>
+                    <option value="no">No</option>
+                </select><br><br>
+    
+                <label for="cover_image">Imagen de Portada:</label>
+                <input type="file" id="cover_image" name="cover_image"><br><br>
+    
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+    </main>
+    
+</body>
+</html>

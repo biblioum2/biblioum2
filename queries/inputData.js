@@ -4,9 +4,8 @@ const pool = require('../config/database');
 // Función para insertar un usuario
 const insertUser = async (username, passwordHash, email, role) => {
   const query = `
-    INSERT INTO users (username, password_hash, email, role)
-    VALUES ($1, $2, $3, $4)
-    RETURNING *;
+    INSERT INTO users (username, password_hash, email, role) VALUES
+    ($1, $2, $3, $4)
   `;
   const values = [username, passwordHash, email, role];
 
@@ -18,77 +17,77 @@ const insertUser = async (username, passwordHash, email, role) => {
   }
 };
 
-// Función para insertar un autor
-const insertAuthor = async (name, biography) => {
-  const query = `
-    INSERT INTO authors (name, biography)
-    VALUES ($1, $2)
-    RETURNING *;
-  `;
-  const values = [name, biography];
-
-  try {
-    const res = await pool.query(query, values);
-    console.log('Autor insertado:', res.rows[0]);
-  } catch (error) {
-    console.error('Error al insertar autor:', error);
-  }
-};
-
-// Función para insertar una categoría
+// Función para insertar una categoria
 const insertCategory = async (name) => {
   const query = `
-    INSERT INTO categories (name)
-    VALUES ($1)
-    RETURNING *;
+    INSERT INTO categories (name) VALUES
+    ($1)
+
   `;
   const values = [name];
 
   try {
     const res = await pool.query(query, values);
-    console.log('Categoría insertada:', res.rows[0]);
+    console.log('Categoria insertada:', res.rows[0]);
   } catch (error) {
-    console.error('Error al insertar categoría:', error);
+    console.error('Error al insertar categoria:', error);
   }
 };
 
 // Función para insertar un libro
-const insertBook = async (title, authorId, categoryId, publicationDate, isbn, summary, coverImageFilename) => {
+const insertBook = async (name) => {
   const query = `
-    INSERT INTO books (title, author_id, category_id, publication_date, isbn, summary, cover_image_filename)
-    VALUES ($1, $2, $3, $4, $5, $6, $7)
-    RETURNING *;
+    INSERT INTO books (title, edition, author, category_id, publication_date, isbn, summary, available, cover_image_filename) VALUES
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+
   `;
-  const values = [title, authorId, categoryId, publicationDate, isbn, summary, coverImageFilename];
+  const values = [name];
 
   try {
     const res = await pool.query(query, values);
-    console.log('Libro insertado:', res.rows[0]);
+    console.log('Libro ingresado:', res.rows[0]);
   } catch (error) {
-    console.error('Error al insertar libro:', error);
+    console.error('Error al ingresar libro:', error);
   }
 };
 
-// Función para insertar un favorito
+// Función para insertar un libro en favoritos
 const insertFavorite = async (userId, bookId) => {
-  const query = `
-    INSERT INTO favorites (user_id, book_id)
-    VALUES ($1, $2)
-    RETURNING *;
+  const query = `    
+    INSERT INTO favorites (user_id, book_id) VALUES
+    ($1, $2)
+
   `;
   const values = [userId, bookId];
 
   try {
     const res = await pool.query(query, values);
-    console.log('Favorito insertado:', res.rows[0]);
+    console.log('Libro Agregado a favoritos:', res.rows[0]);
   } catch (error) {
-    console.error('Error al insertar favorito:', error);
+    console.error('Error al insertar libro en favoritos:', error);
+  }
+};
+
+// Función para insertar un orden
+const insertOrder = async (userId, bookId, status) => {
+  const query = `
+    INSERT INTO orders (user_id, book_id, status) VALUES
+    ($1, $2, $3)
+
+  `;
+  const values = [userId, bookId, status];
+
+  try {
+    const res = await pool.query(query, values);
+    console.log('Orden agregada:', res.rows[0]);
+  } catch (error) {
+    console.error('Error al agregar orden:', error);
   }
 };
 
 // Ejemplos de uso
-// (async () => {
-//   // await insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
+// const ins = async () => {
+//   await insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
 //   // await insertAuthor('Autor 1', 'Biografía del autor 1');
 //   // await insertCategory('Tecnologia');
 //   // await insertBook('Libro 1', 1, 1, '2023-01-01', '1234567890123', 'Resumen del libro 1', 'eloquent.jpeg');
@@ -96,8 +95,14 @@ const insertFavorite = async (userId, bookId) => {
 
 //   // Cierra la conexión después de insertar los datos
 //   await pool.end();
-// })();
+// };
+
+// insertUser('severo', 'password', 'enrrimarq2000@gmail.com', 'admin');
 
 module.exports = {
   insertUser: insertUser,
+  insertBook: insertBook,
+  insertCategory: insertCategory,
+  insertFavorite: insertFavorite,
+  insertOrder: insertOrder,
 };

@@ -5,24 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administrar Usuarios</title>
 <link rel="stylesheet" href="/css/users.css">
+<link rel="stylesheet" href="/css/nav-admin.css">
+<!-- <link rel="stylesheet" href="/css/footer.css"> -->
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Administrar Usuarios</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="users.html" class="active">Usuarios</a></li>
-                    <li><a href="authors.html">Autores</a></li>
-                    <li><a href="categories.html">Categorías</a></li>
-                    <li><a href="books.html">Libros</a></li>
-                    <li><a href="orders.html">Órdenes</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
+    <%- include('./partials/adminHeader.ejs') %>
+    
+<% if (userAdded && postResponse) { %>
+    <div class="notification success">
+        ¡Usuario insertado con éxito!
+    </div>
+<% } else if(userAdded == false && postResponse == true) { %>
+    <div class="notification error">
+        ¡Error al agregar usuario!
+    </div>
+<% } %>
     <div class="container">
         <section id="search-users">
             <h2>Buscar Usuarios</h2>

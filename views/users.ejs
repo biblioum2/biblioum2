@@ -11,11 +11,11 @@
 <body>
     <%- include('./partials/adminHeader.ejs') %>
     
-<% if (userAdded && postResponse) { %>
+<% if (success) { %>
     <div class="notification success">
         ¡Usuario insertado con éxito!
     </div>
-<% } else if(userAdded == false && postResponse == true) { %>
+<% } else { %>
     <div class="notification error">
         ¡Error al agregar usuario!
     </div>
@@ -81,7 +81,6 @@
             </form>
         </section>
     </div>
-
-    <script src="scripts.js"></script>
+    
 </body>
 </html>

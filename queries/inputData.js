@@ -35,13 +35,13 @@ const insertCategory = async (name) => {
 };
 
 // Función para insertar un libro
-const insertBook = async (name) => {
+const insertBook = async (title, edition, author, categoryId, publicationDate, isbn, summary, available, image ) => {
   const query = `
     INSERT INTO books (title, edition, author, category_id, publication_date, isbn, summary, available, cover_image_filename) VALUES
     ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 
   `;
-  const values = [name];
+  const values = [title, edition, author, categoryId, publicationDate, isbn, summary, available, image];
 
   try {
     const res = await pool.query(query, values);

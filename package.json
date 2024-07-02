@@ -29,6 +29,7 @@
     "etag": "^1.8.1",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
     "finalhandler": "^1.2.0",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",

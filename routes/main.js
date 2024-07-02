@@ -48,7 +48,7 @@ router.get('/admin', (req, res) => {
 });
 
 router.get('/admin/users', (req, res) => {
-  res.render('users', { title: 'users', currentPage: 'users',userAdded: undefined, postResponse: false});
+  res.render('users', { title: 'users', currentPage: 'users',success: undefined, postResponse: false});
 });
 
 // Otras rutas básicas pueden ir aquí

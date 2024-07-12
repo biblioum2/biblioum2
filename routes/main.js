@@ -52,14 +52,12 @@ router.get('/admin/users', (req, res) => {
 });
 
 // Otras rutas básicas pueden ir aquí
-router.get('admin/users/exito', (req, res) => {
-  res.render('users', { userAdded: true, postResponse: true });
+router.get('/admin/users/success', (req, res) => {
+  res.render('users', { title: 'users', currentPage: 'users', success: true });
 });
+
 
 router.get('/admin/books', (req, res) => {
   res.render('books', { title: 'libros', currentPage: 'books', bookAdded: undefined, postResponse: false});
-});
-router.get('admin/books/exito', (req, res) => {
-  res.render('books', { bookAdded: true, postResponse: true });
 });
 module.exports = router;

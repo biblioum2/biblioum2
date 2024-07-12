@@ -24,21 +24,18 @@ app.set("views", path.join(__dirname, "views"));
 const indexRouter = require("./routes/main");
 
 // Ruta POST para agregar un usuario con validación de datos
-app.post("/admin/users", validateUserData, async (req, res) => {
+app.post("/admin/users", async (req, res) => {
   const { username, password, email, role } = req.body;
-
+  
   try {
-    // Llama a una función asincrónica para insertar un usuario en la base de datos
     await insertUser(username, password, email, role);
-
-    // Si la inserción es exitosa, responde con un JSON indicando éxito
-    res.json({ success: true });
+    res.redirect('/admin/users/success');
   } catch (error) {
-    // Si ocurre un error durante la inserción, imprime el error en la consola
     console.log("Error al agregar usuario: ", error);
-    res.status(500).json({ success: false, error: "Error al agregar usuario" });
+    res.status(500).render('users', { title: 'users', currentPage: 'users', success: false });
   }
 });
+
 
 app.use("/", indexRouter);
 

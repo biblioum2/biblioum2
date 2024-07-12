@@ -11,7 +11,7 @@ const insertUser = async (username, passwordHash, email, role) => {
 
   try {
     const res = await pool.query(query, values);
-    console.log('Usuario insertado:', res.rows[0]);
+    console.log('Usuario insertado:', res.rows);
   } catch (error) {
     console.error('Error al insertar usuario:', error);
   }

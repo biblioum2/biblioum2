@@ -126,25 +126,37 @@ body {
     margin-bottom: 10px;
 }
 
-.notification {
-    position: absolute;
-        width: 300px;
-        padding: 20px;
-        margin-top: 23em;
-        margin-left: 28em;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: bold;
-        text-align: center;
-        opacity: 0;
-        animation: fadeInOut 3s ease-in-out;
-    }
-    .success {
-        background-color: #5cb85c; /* verde */
-    }
-    .error {
-        background-color: #d9534f; /* rojo */
-    }
+.notification.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 10px 15px;
+    margin-bottom: 15px; 
+    border-radius: 4px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; 
+  }
+  
+  .notification.success p {
+    margin: 0;
+  }
+  
+  .notification.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1; 
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px; 
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .notification.error p {
+    margin: 0;
+  }
+  
+  
 
     @keyframes fadeInOut {
         0%, 100% {

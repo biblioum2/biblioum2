@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Confirmación</title>
+    <meta name="author" content="Cristian Eduardo Del Angel Gutierrez" />
+    <meta name="keywords" content="Confirmacion, Uman, Catalogo electronico, SeMejor" />
+    <meta name="description" content="Pagina de seguimiento para recuperar cuenta en caso de olvidar la clave de acceso" />
+    <link rel="icon" href="../multimedia/uman.ico" />
+    <link rel="stylesheet" type="text/css" href="Seguimiento-contra.css" />
+</head>
+
+<body>
+    <div class="container-main">
+        <form>
+            <div id="logo">
+                <img src="../multimedia/uman.png" alt="" />
+            </div>
+            <h1>Escribe el código</h1>
+            <div class="label1">
+                <label for="label1">Se acaba de enviar un mensaje de texto con un código de verificación de 6 dígitos al correo o número asociado a la cuenta.</label>
+            </div>
+            <div class="correo">
+                <input type="text" id="label1" placeholder="Introduce el código de 6 dígitos" aria-labelledby="Resetpwd" autocomplete="email" testid="SendNow" name="label1" />
+                <!--Testid sirve para dar un id a un elemento con un valor que puede cambiar y por medio de ese id cambiar ese valor del DOM en js-->
+            </div>
+            <div class="botones">
+
+                <input type="button" value="Atrás" id="Cancelar" />
+                <input type="button" value="Siguiente" id="Siguiente" />
+
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

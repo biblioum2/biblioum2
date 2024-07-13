@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Olvidó Contraseña</title>
+    <link rel="stylesheet" type="text/css" href="Olvido-contra.css" />
+    <link rel="icon" href="../multimedia/uman.ico" />
+</head>
+
+<body>
+    <div class="container-main">
+        <form>
+            <div id="logo">
+                <img src="../multimedia/uman.png" alt="" />
+            </div>
+            <h1>Restaurar Contraseña</h1>
+            <div class="label1">
+                <label for="label1">Ingresa el correo asociado a tu cuenta:</label>
+            </div>
+            <div class="correo">
+                <input type="email" id="label1" placeholder="Correo electrónico" aria-labelledby="Resetpwd" autocomplete="email" testid="SendNow" name="label1" />
+                <!--Testid sirve para dar un id a un elemento con un valor que puede cambiar y por medio de ese id cambiar ese valor del DOM en js-->
+            </div>
+            <div class="botones">
+
+                <input type="button" value="Cancelar" id="Cancelar" />
+                <input type="button" value="Siguiente" id="Siguiente" />
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

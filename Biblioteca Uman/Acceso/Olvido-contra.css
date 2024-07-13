@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: url("../multimedia/olvido contra/fondo-contra.jpg");
+}
+
+.container-main {
+    position: relative;
+}
+
+.container-main form {
+    display: flex;
+    color: #000;
+    font-family: San-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 200px;
+    left: 600px;
+    height: 338px;
+    width: 440px;
+    border-radius: 10px;
+    flex-direction: column;
+    background: transparent;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 5px 5px #000;
+    white-space: pre-wrap;
+
+}
+
+.container-main form h1 {
+    margin-top: 80px;
+    margin-left: 45px;
+    font-family: Helvetica;
+    font-size: 30px;
+}
+
+.container-main #label1 {
+    border-color: rgb(102, 102, 102);
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    background-color: transparent;
+    outline-style: none;
+    height: 36px;
+    width: 75%;
+    font-family: inherit;
+    font-size: 20px;
+    line-height: inherit;
+    margin: 0px;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+
+}
+
+.botones {
+    display: flex;
+    position: relative;
+    justify-content: right;
+    margin-right: 44px;
+    margin-top: 5px;
+}
+
+.botones #Cancelar {
+    color: #000;
+    background: #00000033;
+    touch-action: manipulation;
+    display: inline-block;
+    border-bottom-color: rgb(0, 103, 184);
+    border-right-color: rgb(0, 103, 184);
+    border-left-color: #00000033;
+    border-top-color: rgb(0, 103, 184);
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    line-height: normal;
+    min-width: 108px;
+    border-bottom-style: none;
+    border-lest-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    min-height: 32px;
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: "center";
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative vertical-align: middle;
+    appearance: auto;
+    text-shadow: none;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.botones #Siguiente {
+    font-size: 15px;
+    color: #FFF;
+    background: #0067B8;
+    touch-action: manipulation;
+    display: inline-block;
+    border-bottom-color: rgb(0, 103, 184);
+    border-right-color: rgb(0, 103, 184);
+    border-left-color: #0067B8;
+    border-top-color: rgb(0, 103, 184);
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    line-height: normal;
+    min-width: 108px;
+    border-bottom-style: none;
+    border-lest-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    min-height: 32px;
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: "center";
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative vertical-align: middle;
+    appearance: auto;
+    text-shadow: none;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+}
+
+.label1 label {
+    font-family: Roboto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-top: 0px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25rem;
+
+}
+
+#logo {
+    height: 30px;
+    position: absolute;
+    margin-left: -50px;
+}
+
+#logo img {
+    height: 55px;
+}

@@ -1,0 +1,242 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: url("../multimedia/olvido contra/fondo-contra.jpg");
+}
+
+.container-main {
+    position: relative;
+}
+
+.container-main form {
+    display: flex;
+    color: #000;
+    font-family: San-serif;
+    font-weight: bold;
+    position: absolute;
+    top: 120px;
+    left: 600px;
+    height: 500px;
+    width: 440px;
+    border-radius: 10px;
+    flex-direction: column;
+    background: transparent;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 5px 5px #000;
+
+
+}
+
+.container-main form h1 {
+    margin-top: 80px;
+    margin-left: 45px;
+    font-family: Helvetica;
+    font-size: 30px;
+}
+
+.container-main #label1 {
+    border-color: #000;
+    outline-style: none;
+    height: 36px;
+    width: 90%;
+    font-family: inherit;
+    font-size: 20PX;
+    line-height: inherit;
+    margin: 0px;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    padding-left: 5px;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+
+}
+
+.container-main #label2 {
+    border-color: #000;
+    outline-style: none;
+    height: 36px;
+    width: 90%;
+    font-family: inherit;
+    font-size: 20PX;
+    line-height: inherit;
+    margin: 0px;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    padding-left: 5px;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-wrap: break-word;
+
+}
+
+.botones {
+    display: flex;
+    position: relative;
+    justify-content: right;
+    margin-right: 44px;
+    margin-top: 40px;
+}
+
+.botones #Cancelar {
+    color: #000;
+    background: #00000033;
+    touch-action: manipulation;
+    display: inline-block;
+    border-bottom-color: rgb(0, 103, 184);
+    border-right-color: rgb(0, 103, 184);
+    border-left-color: #00000033;
+    border-top-color: rgb(0, 103, 184);
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    line-height: normal;
+    min-width: 108px;
+    border-bottom-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    min-height: 32px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    appearance: auto;
+    text-shadow: none;
+    border-width: 2px;
+    margin-right: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.botones #Siguiente {
+    font-size: 15px;
+    color: #FFF;
+    background: #0067B8;
+    touch-action: manipulation;
+    display: inline-block;
+    border-bottom-color: rgb(0, 103, 184);
+    border-right-color: rgb(0, 103, 184);
+    border-left-color: #0067B8;
+    border-top-color: rgb(0, 103, 184);
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    line-height: normal;
+    min-width: 108px;
+    border-bottom-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    min-height: 32px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    appearance: auto;
+    text-shadow: none;
+    border-width: 2px;
+    cursor: pointer;
+}
+
+.label1 label {
+    font-family: Sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-top: 0px;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    display: flex;
+    padding-top: 0px;
+    width: 350px;
+}
+
+.label1 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 18px;
+}
+
+.correo {
+    display: flex;
+    margin-left: 45px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.correo button {
+    position: relative;
+    right: 29px;
+    background: transparent;
+    cursor: pointer;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.correo input {
+    font-size: 40px;
+}
+
+.correo .Nover {
+    right: 45px;
+    margin-top: 5px;
+}
+
+
+#logo {
+    height: 30px;
+    position: absolute;
+}
+
+#logo img {
+    height: 55px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.warning {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    width: 100%;
+}
+
+.warning p {
+    width: 350px;
+    font-family: sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-top: 0;
+    font-weight: 400;
+    line-height: 1.25rem;
+    padding-top: 0;
+    font-size: 15px;
+}

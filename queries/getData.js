@@ -12,7 +12,7 @@ const getBooks = async () => {
 
   try {
     const res = await pool.query(query);
-    // console.log(res.rows);
+    console.log(res.rows);
     return res.rows;
   } catch (error) {
     console.log("Error al obtener los datos", error);
@@ -30,7 +30,7 @@ const getUser = async (name) => {
   const value = [name];
   try {
     const res = await pool.query(query, value);
-    // console.log("El usuario es: ", res.rows[0]);
+    console.log("El usuario es: ", res.rows[0]);
     return res.rows;
   } catch (error) {
     console.log("Error al consultar usuario", error);

@@ -15,13 +15,13 @@
       <h1>Login</h1>
       <% if (username == undefined) { %>
       <div class="input-box">
-        <input type="text" placeholder="username" name="username" id="username" required />
+        <input type="text" autocomplete="off" placeholder="username" name="username" id="username" required />
         <!-- <i class="bx bxs-user"></i> -->
       </div>
       <% } else { %>
       <% if (authErrorName) { %>
       <div class="input-box">
-        <input type="text" class="authError" placeholder="El usuario no existe" name="username" id="username" required />
+        <input type="text" autocomplete="off" class="authError" placeholder="El usuario no existe" name="username" id="username" required />
       </div>
       <% } else {%>
       <div class="input-box">
@@ -32,12 +32,12 @@
       <% } %>
       <% if (authErrorPassword) {%>
       <div class="input-box">
-        <input type="password" id="passwordInput" class="authError" placeholder="Password dont match" name="password" id="password" required />
+        <input type="password" autocomplete="new-password" class="authError" placeholder="Password dont match" name="password" id="password" required />
         <!-- <i class="bx bxs-lock-alt"></i> -->
       </div>
       <% } else { %>
       <div class="input-box">
-        <input type="password" placeholder="password" name="password" id="password" required />
+        <input type="password" autocomplete="new-password" placeholder="password" name="password" id="password" required />
         <!-- <i class="bx bxs-lock-alt"></i> -->
       </div>
       <% } %>
@@ -49,9 +49,9 @@
 
       <button type="submit" class="btn" href="main.html">Login</button>
 
-      <div class="register-link">
+      <!-- <div class="register-link">
         <p>Don't have an account? <a href="#">Register here!</a></p>
-      </div>
+      </div> -->
     </form>
   </div>
 </body>

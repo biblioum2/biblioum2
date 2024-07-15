@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -21,11 +22,13 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Configuracion de session
-app.use(session({
-  secret: 'tu_secreto_aqui',
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: "tu_secreto_aqui",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // Rutas
 const indexRouter = require("./routes/main");
@@ -34,21 +37,24 @@ app.use("/", indexRouter);
 // Ruta POST para agregar un usuario con validación de datos
 app.post("/admin/users", async (req, res) => {
   const { username, password, email, role } = req.body;
-  
+
   try {
     await insertUser(username, password, email, role);
-    res.redirect('/admin/users/success');
+    res.redirect("/admin/users/success");
   } catch (error) {
     console.log("Error al agregar usuario: ", error);
-    res.status(500).render('users', { title: 'users', currentPage: 'users', success: false });
+    res
+      .status(500)
+      .render("users", {
+        title: "users",
+        currentPage: "users",
+        success: false,
+      });
   }
 });
 
-
-
 app.post("/login", async (req, res) => {
   const { username, password, remember } = req.body;
-
   try {
     const data = await getUser(username, password);
     if (data.length > 0) {
@@ -56,20 +62,28 @@ app.post("/login", async (req, res) => {
       if (user.password_hash == password) {
         // EVALUAR EL ROL DEL USUARIO
         const isAdmin = user.role == `admin` ? true : false;
-        console.log("Es admin desde app? ", isAdmin);
+        // console.log("Es admin desde app? ", isAdmin);
         const authToken = `${user.user_id}-${Math.random()
           .toString(36)
           .substring(7)}`;
-
         // Establecer cookie de autenticación
         const cookieOptions = {
           maxAge: remember ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000, // 30 días si se selecciona "Remember Me", 1 día si no
           httpOnly: true, // La cookie solo es accesible mediante HTTP
           sameSite: "strict", // Limita el alcance de la cookie a la misma origin
         };
+        // Enviar los datos del usuario por cookies
+        const username = user.username;
+        const email = user.email;
+
         res.cookie("authToken", authToken, cookieOptions);
         res.cookie("isAdmin", isAdmin, cookieOptions);
-        req.session.user = data[0];
+        res.cookie("username", username, cookieOptions);
+        res.cookie("email", email, cookieOptions);
+
+        // Enviar los datos de usuario a la session
+
+        req.session.user = user;
         res.redirect("/");
       } else {
         res.render("login", {
@@ -119,6 +133,11 @@ app.post("/admin/books", async (req, res) => {
     console.log("Error al agregar libro: ", error);
   }
 });
+
+
+
+
+
 // Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

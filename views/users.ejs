@@ -44,20 +44,20 @@
                 <div class="form-group">
                     <label for="role">Rol</label>
                     <select class="" name="role" id="role">
-                        <option value="admin">Usuario</option>
-                        <option value="user">Administrado</option>
+                        <option value="student">Estudiante</option>
+                        <option value="admin">Administrador</option>
                     </select>                
                 </div>
                 <button type="submit" class="btn-submit">Agregar Usuario</button>
             </form>
         </section>
 
-        <section id="search-users">
-            <h2>Buscar Usuarios</h2>
-            <input type="text" autocomplete="off" id="search-input" placeholder="Buscar usuario por nombre...">
-        </section>
-
         <section>
+            <form id="search-users" action="/search-users" method="POST">
+                <h2>Buscar Usuarios</h2>
+                <input type="text" autocomplete="off" id="search-input" placeholder="Buscar usuario por nombre...">
+            </form>
+            
             <h2>Lista de Usuarios</h2>
             <table id="user-table" class="user-table">
                 <thead>
@@ -71,16 +71,19 @@
                 </thead>
                 <tbody>
                     <!-- Aquí se llenarán dinámicamente los datos de los usuarios -->
-                    <tr>
-                        <td>1</td>
-                        <td>admin</td>
-                        <td>admin@example.com</td>
-                        <td>Administrador</td>
-                        <td>
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </td>
-                    </tr>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.user_id %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.role %></td>
+                            <td>
+                                <button class="btn-edit">Editar</button>
+                                <button class="btn-delete">Eliminar</button>
+                            </td>
+                        </tr>
+                      <% }) %>
+                    
                     <!-- Puedes agregar más filas dinámicamente con JavaScript -->
                 </tbody>
             </table>
@@ -99,8 +102,8 @@
             }, 2500); // 5000 milisegundos = 5 segundos
           }
         }
-      
         hideNotification();
+
       </script>
       
 </body>

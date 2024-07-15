@@ -20,8 +20,16 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// Configuracion de session
+app.use(session({
+  secret: 'tu_secreto_aqui',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // Rutas
 const indexRouter = require("./routes/main");
+app.use("/", indexRouter);
 
 // Ruta POST para agregar un usuario con validación de datos
 app.post("/admin/users", async (req, res) => {
@@ -37,7 +45,6 @@ app.post("/admin/users", async (req, res) => {
 });
 
 
-app.use("/", indexRouter);
 
 app.post("/login", async (req, res) => {
   const { username, password, remember } = req.body;
@@ -62,7 +69,7 @@ app.post("/login", async (req, res) => {
         };
         res.cookie("authToken", authToken, cookieOptions);
         res.cookie("isAdmin", isAdmin, cookieOptions);
-
+        req.session.user = data[0];
         res.redirect("/");
       } else {
         res.render("login", {

@@ -88,8 +88,26 @@
                 </tbody>
             </table>
         </section>
+        <section>
+            <ol id="fetchUsers"></ol>
+            <br>
+            <br>
+            <br>
+        </section>
     </div>
     <script>
+        const $input = document.getElementById('search-input');
+        $input.addEventListener('input', () => {
+            const $users = document.getElementById('fetchUser'),
+            $fragment = document.createDocumentFragment();
+
+            while ($users.firstChild) {
+                $users.removeChild($users.firstChild);
+            }
+            fetch('http://localhost:2000/admin/user/data').then().then().catch();
+
+
+        });
         // Función para esconder la notificación después de cierto tiempo
         function hideNotification() {
           const notification = document.querySelector('.notification');
@@ -103,7 +121,26 @@
           }
         }
         hideNotification();
+        (() => {
+            const $search = document.getElementById('fetchUsers'),
+            $fragment = document.createDocumentFragment();
 
+            fetch('http://localhost:2000/admin/users/data')
+            .then((res) => ( res.ok ? res.json() : Promise.reject(res) ))
+            .then((json) => {
+                console.log(`Estos son los usuarios: ${JSON.stringify(json)}`);
+                json.forEach((el) => {
+                    let $li = document.createElement('li');
+                    $li.innerHTML = `${el.username} --- ${el.email}`;
+                    $fragment.appendChild($li);
+                });
+                $search.appendChild($fragment);
+            }
+            )
+            .catch((err) => {
+                console.log(err);
+            });
+        })();
       </script>
       
 </body>

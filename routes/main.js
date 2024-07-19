@@ -66,6 +66,15 @@ router.get('/admin/users/success', async (req, res) => {
   res.render('users', { title: 'users', users: users, currentPage: 'users', success: true });
 });
 
+router.get('/admin/users/data', async (req, res) => {
+  const users = await getUsers(0);
+  res.json(users);
+});
+
+router.get('/admin/user/data', async (req, res) => {
+  const users = await getUser;
+  res.json(users);
+});
 
 router.get('/admin/books', (req, res) => {
   res.render('books', { title: 'libros', currentPage: 'books', bookAdded: undefined, postResponse: false});

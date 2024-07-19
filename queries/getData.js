@@ -43,14 +43,13 @@ LIMIT $2 OFFSET $3;
   }
 };
 
-// OBTENER EL USUARIO PARA VALIDAR INICIO
 
 const getUsers = async (offset) => {
-    const query = `
-    SELECT *
-    FROM users
-    LIMIT 10 OFFSET $1
-    `;
+  const query = `
+  SELECT *
+  FROM users
+  LIMIT 10 OFFSET $1
+  `;
     const values = [offset];
     try {
       const res = await pool.query(query, values);
@@ -59,7 +58,9 @@ const getUsers = async (offset) => {
       console.log("Error al consultar usuario", error);
       throw error;
     }
-};
+  };
+  
+  // OBTENER EL USUARIO PARA VALIDAR INICIO
 
 const getUser = async (name) => {
   const query = `
@@ -77,33 +78,10 @@ const getUser = async (name) => {
   }
 };
 
-// VERIFICAR SI UN LIBRO ESTA DISPONIBLE
 
-const getBookDisp = async (id) => {
-  const query = `
-SELECT 
-    CASE 
-        WHEN EXISTS (
-            SELECT 1 
-            FROM orders 
-            WHERE book_id = $1 AND status = 'Prestado' AND return_date IS NULL
-        ) THEN 'Prestado'
-        ELSE 'Disponible'
-    END AS disponibilidad;
-    `;
-
-  const value = [id];
-  try {
-    const res = pool.query(query, value);
-    return res.rows[0];
-  } catch (error) {
-    console.log(`Error al consultar disponibilidad del libro`, error);
-  }
-};
 
 module.exports = {
   getBooks,
   getUser,
-  getBookDisp,
   getUsers,
 };

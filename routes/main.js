@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 const { getBooks, getUsers, getUserLiveSearch} = require('../queries/getData');
-
+const { deleteUser } = require('../queries/deleteData');
 router.use(cookieParser());
 
 
@@ -76,6 +76,22 @@ router.get('/admin/user/data', async (req, res) => {
   console.log(`Este es el term ${term}`);
   const users = await getUserLiveSearch(term);
   res.json(users);
+});
+
+router.delete('/admin/users/:id', async (req, res) => {
+  const userId = req.params.id;
+  console.log('este es el id a eliminar:',userId);
+  try {
+      const result = await deleteUser(userId);
+      if (result.rowCount > 0) {
+          res.json({ success: true });
+      } else {
+          res.json({ success: false, message: 'Usuario no encontrado.' });
+      }
+  } catch (err) {
+      console.error('Error al eliminar el usuario:', err);
+      res.status(500).json({ success: false, message: 'Error del servidor.' });
+  }
 });
 
 router.get('/admin/books', (req, res) => {

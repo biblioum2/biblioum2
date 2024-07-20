@@ -79,7 +79,7 @@
                             <td><%= user.role %></td>
                             <td>
                                 <button class="btn-edit">Editar</button>
-                                <button class="btn-delete">Eliminar</button>
+                                <button class="btn-delete" data-id="<%= user.user_id %>">Eliminar</button>
                             </td>
                         </tr>
                       <% }) %>
@@ -206,6 +206,32 @@
             }
         }
         hideNotification();
+
+        // Función para manejar la eliminación de usuarios
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('btn-delete')) {
+                const userId = event.target.getAttribute('data-id');
+                if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+                    fetch(`http://localhost:3000/admin/users/${userId}`, {
+                        method: 'DELETE',
+                    })
+                    .then(res => res.ok ? res.json() : Promise.reject(res))
+                    .then(data => {
+                        if (data.success) {
+                            const row = document.querySelector(`tr[data-id="${userId}"]`);
+                            row.remove();
+                            alert('Usuario eliminado con éxito.');
+                        } else {
+                            alert('Error al eliminar el usuario desde cliente');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Error desde fetch:', err);
+                        alert('Error al eliminar el usuario.');
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>

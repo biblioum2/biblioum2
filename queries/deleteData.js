@@ -76,6 +76,21 @@ const deleteTableFavorites = async () => {
     }
 };
 
+const deleteUser = async (userId) => {
+    const query = `
+        DELETE FROM users WHERE user_id = $1;
+    `;
+    try {
+         const result = await pool.query(query, [userId]);
+        return result.rowCount;
+    } catch (err) {
+        console.error('Error deleting user', err);
+    }
+}
+
+module.exports = {
+    deleteUser,
+};
 
 // deleteTableFavorites();
 // deleteTableOrders();

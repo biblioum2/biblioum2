@@ -10,7 +10,7 @@ const { getUser } = require("./queries/getData");
 const { insertUser, insertBook } = require("./queries/inputData");
 
 const app = express();
-const port = 2000;
+const port = 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));

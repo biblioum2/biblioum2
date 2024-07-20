@@ -79,9 +79,30 @@ const getUser = async (name) => {
 };
 
 
+const getUserLiveSearch = async (name) => {
+  const query = `
+        SELECT * FROM users WHERE username ILIKE '%' || $1 || '%';
+    `;
+  const value = [name];
+  try {
+    const res = await pool.query(query, value);
+    console.log("El get user usuario live es: ", res.rows[0]);
+    return res.rows;
+  } catch (error) {
+    console.log("Error al consultar usuario", error);
+    throw error;
+  }
+};
+
+// CATEGORIAS
+
+// CREAR
+
+  
 
 module.exports = {
   getBooks,
   getUser,
   getUsers,
+  getUserLiveSearch,
 };

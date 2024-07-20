@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cookieParser = require('cookie-parser');
-const { getBooks, getUsers } = require('../queries/getData');
+const { getBooks, getUsers, getUserLiveSearch} = require('../queries/getData');
 
 router.use(cookieParser());
 
@@ -72,7 +72,9 @@ router.get('/admin/users/data', async (req, res) => {
 });
 
 router.get('/admin/user/data', async (req, res) => {
-  const users = await getUser;
+  const term = req.query.term || '';
+  console.log(`Este es el term ${term}`);
+  const users = await getUserLiveSearch(term);
   res.json(users);
 });
 
